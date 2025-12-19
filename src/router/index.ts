@@ -1,5 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import computerFreeDiagnosisAppointment from '../views/computerFreeDiagnosisAppointment.vue'
+import DevelopDepartment from '../views/DevelopDepartment.vue'
+import externalPropagandaDepartment from '../views/externalPropagandaDepartment.vue'
 
 // 创建一个简单的Home组件
 const Home = {
@@ -23,6 +25,16 @@ const router = createRouter({
       path: '/computerFreeDiagnosisAppointment',
       name: 'computerFreeDiagnosisAppointment',
       component: computerFreeDiagnosisAppointment
+    },
+    {
+      path: '/DevelopDepartment',
+      name: 'DevelopDepartment',
+      component: DevelopDepartment
+    },
+    {
+      path: '/externalPropagandaDepartment',
+      name: 'externalPropagandaDepartment',
+      component: externalPropagandaDepartment
     },
     // 404路由
     {
