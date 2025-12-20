@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <!-- OrangeTopNav 导航组件 -->
     <OrangeTopNav />
     <router-view v-slot="{ Component, route }">
       <transition :name="route.meta.transition || 'fade'" mode="out-in">
@@ -10,11 +11,24 @@
 </template>
 
 <script setup>
+import OrangeTopNav from './components/OrangeTopNav.vue'
+
 defineOptions({ name: 'App' })
 </script>
 
 <style>
+/* 引入外部基础样式 */
+@import './base.css';
+
+/* 全局重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 #app {
+  width: 100%;
   min-height: 100vh;
 }
 
