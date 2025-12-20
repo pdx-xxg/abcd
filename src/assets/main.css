@@ -1,18 +1,7 @@
-<template>
-  <div id="app">
-    <!-- 使用组件化导航 OrangeTopNav -->
-    <OrangeTopNav />
-    <router-view />
-  </div>
-</template>
-
-<script setup>
-defineOptions({ name: 'App' })
-</script>
-
-<!-- 整合所有样式，包含全局重置、base.css 引入、交互样式 -->
-<style>
-/* 引入外部基础样式 */
+<template><div id="app"><OrangeTopNav /><router-view /></div></template><script setup>defineOptions({
+  name: 'App'
+}) </script><style>
+/* 引入基础样式（保留你的base.css引入） */
 @import './base.css';
 
 /* ===== 全局重置，不做居中布局 ===== */
@@ -20,13 +9,14 @@ defineOptions({ name: 'App' })
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* 补充全局盒模型重置，避免布局错乱 */
 }
 
 #app {
   width: 100%;
   min-height: 100vh;
   font-weight: normal;
-  /* 保留原有字体和抗锯齿样式，兼容旧版需求 */
+  /* 补充原有字体/抗锯齿样式，兼顾旧版视觉 */
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -46,4 +36,5 @@ a,
     background-color: hsla(160, 100%, 37%, 0.2);
   }
 }
+
 </style>
