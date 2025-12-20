@@ -1,6 +1,6 @@
 <template>
   <div class="external-propaganda-page">
-    <LxComponent 
+    <LxDepartment 
       :variable-text="variableText"
       :bottom-text="bottomText"
       :bottom-description="bottomDescription"
@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import LxComponent from '@/components/lx.vue'
+import LxDepartment from '@/components/LxDepartment'
 
 // 设置外宣部相关文字内容
 const variableText = '外宣部'

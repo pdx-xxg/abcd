@@ -1,5 +1,5 @@
 <template>
-  <div class="lx-container">
+  <div class="lx-department-container">
     <!-- 上半部分：两个盒子 -->
     <div class="top-section">
       <!-- 靠上的盒子：文字"橙果工作室" -->
@@ -31,6 +31,7 @@
 </template>
 
 <script setup lang="ts">
+defineOptions({ name: 'LxDepartment' })
 
 interface Props {
   variableText?: string
@@ -53,7 +54,7 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 
 <style scoped>
-.lx-container {
+.lx-department-container {
   width: 100%;
   min-height: 100vh;
   background: linear-gradient(135deg, #FFA500 0%, #32CD32 100%); /* 橙绿渐变 */

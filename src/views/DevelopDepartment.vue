@@ -1,6 +1,6 @@
 <template>
   <div class="develop-department-page">
-    <LxComponent 
+    <LxDepartment 
       :variable-text="variableText"
       :bottom-text="bottomText"
       :bottom-description="bottomDescription"
@@ -11,7 +11,8 @@
 </template>
 
 <script setup lang="ts">
-import LxComponent from '@/components/lx.vue'
+
+import LxDepartment from '@/components/LxDepartment'
 
 // 设置开发部相关文字内容
 const variableText = '开发部'
