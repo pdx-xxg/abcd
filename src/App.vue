@@ -1,9 +1,7 @@
 <template>
   <div id="app">
-    <!-- 使用组件化导航 OrangeTopNav（来自main分支） -->
+    <!-- OrangeTopNav 导航组件 -->
     <OrangeTopNav />
-    
-    
     
     <!-- 路由视图 -->
     <router-view />
@@ -11,15 +9,16 @@
 </template>
 
 <script setup>
+import OrangeTopNav from './components/OrangeTopNav.vue'
+
 defineOptions({ name: 'App' })
 </script>
 
-<!-- 整合所有样式 -->
 <style>
-/* 引入外部基础样式（来自main分支） */
+/* 引入外部基础样式 */
 @import './base.css';
 
-/* 全局重置（来自两个分支的合并） */
+/* 全局重置 */
 * {
   margin: 0;
   padding: 0;
@@ -38,8 +37,28 @@ defineOptions({ name: 'App' })
   color: #2c3e50;
 }
 
+/* 原有的导航链接样式 */
+.legacy-nav {
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+}
+
+.legacy-nav a {
+  margin-right: 15px;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #2c3e50;
+  border-radius: 4px;
+}
+
+.legacy-nav a:hover {
+  background-color: #e9e9e9;
+}
+
+/* 原有的绿色链接样式 */
 a,
-green {
+.green { /* 注意：这里应该是 .green 类选择器 */
   text-decoration: none;
   color: hsla(160, 100%, 37%, 1);
   transition: 0.4s;

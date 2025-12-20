@@ -4,7 +4,7 @@ const routes = [
   // ========== 主页重定向 ==========
   {
     path: '/',
-    redirect: '/orange事务部',  // 使用orange事务部作为主页
+    redirect: '/orange事务部',
   },
 
   // ========== orange部门路由 ==========
@@ -29,7 +29,19 @@ const routes = [
     component: () => import(/* webpackChunkName: "Orange 开发" */ '../views/Orange 开发.vue')
   },
 
-  // ========== 其他部门路由 ==========
+  // ========== 其他硬件/开发部门路由 ==========
+  {
+    path: '/hardware',
+    name: 'hardware',
+    component: () => import(/* webpackChunkName: "hardware" */ '../views/hardware.vue')
+  },
+  {
+    path: '/full-stack',
+    name: 'full-stack',
+    component: () => import(/* webpackChunkName: "full-stack" */ '../views/full-stack.vue')
+  },
+
+  // ========== 查询类路由 ==========
   {
     path: '/student-query',
     name: 'StudentQuery',
@@ -45,6 +57,8 @@ const routes = [
     name: 'computerFreeDiagnosisAppointment',
     component: () => import('../views/computerFreeDiagnosisAppointment.vue'),
   },
+
+  // ========== 开发部门路由 ==========
   {
     path: '/DevelopDepartment',
     name: 'DevelopDepartment',
@@ -65,7 +79,6 @@ const routes = [
 ]
 
 const router = createRouter({
-  // 统一使用 hash 模式（避免部署问题）
   history: createWebHashHistory(),
   routes
 })
