@@ -1,48 +1,43 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
-import computerFreeDiagnosisAppointment from '../views/computerFreeDiagnosisAppointment.vue'
-import DevelopDepartment from '../views/DevelopDepartment.vue'
-import externalPropagandaDepartment from '../views/externalPropagandaDepartment.vue'
-
-// 创建一个简单的Home组件
-const Home = {
-  template: '<div>Home Page</div>'
-}
-
-// 创建一个简单的NotFound组件
-const NotFound = {
-  template: '<div>404 Not Found</div>'
-}
+import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      redirect: '/student-query',
     },
     {
-      path: '/computerFreeDiagnosisAppointment',
+      path: '/student-query',
+      name: 'StudentQuery',
+      component: () => import('../views/RegistrationQuery.vue'),
+    },
+    {
+      path: '/phone-query',
+      name: 'PhoneQuery',
+      component: () => import('../views/PcClinicQuery.vue'),
+    },
+    {
+      path: '/infra/repair-book',
       name: 'computerFreeDiagnosisAppointment',
-      component: computerFreeDiagnosisAppointment
+      component: () => import('../views/computerFreeDiagnosisAppointment.vue'),
     },
     {
       path: '/DevelopDepartment',
       name: 'DevelopDepartment',
-      component: DevelopDepartment
+      component: () => import('../views/DevelopDepartment.vue'),
     },
     {
       path: '/externalPropagandaDepartment',
       name: 'externalPropagandaDepartment',
-      component: externalPropagandaDepartment
+      component: () => import('../views/externalPropagandaDepartment.vue'),
     },
-    // 404路由
     {
       path: '/:pathMatch(.*)*',
       name: 'notFound',
-      component: NotFound
-    }
-  ]
+      component: { template: '<div>404 Not Found</div>' },
+    },
+  ],
 })
 
 export default router

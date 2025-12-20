@@ -1,11 +1,16 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
-  <router-view />
+  <div id="app">
+    <OrangeTopNav />
+    <router-view />
+  </div>
 </template>
 
-<style scoped>
+<script setup>
+defineOptions({ name: 'App' })
+</script>
 
+<style>
+#app {
+  min-height: 100vh;
+}
 </style>
