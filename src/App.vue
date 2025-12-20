@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import OrangeTopNav from './components/OrangeTopNav.vue'
+import OrangeTopNav from './components/OrangeTopNav'
 
 defineOptions({ name: 'App' })
 </script>
