@@ -1,43 +1,23 @@
+
+// src/router/index.ts
 import { createRouter, createWebHistory } from 'vue-router'
+import Register from '@/views/Register.vue'
+import Success from '@/views/Success.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      redirect: '/student-query',
+      path: '/', // 根路径（首页）对应Success页面
+      name: 'Success',
+      component: Success
     },
     {
-      path: '/student-query',
-      name: 'StudentQuery',
-      component: () => import('../views/RegistrationQuery.vue'),
-    },
-    {
-      path: '/phone-query',
-      name: 'PhoneQuery',
-      component: () => import('../views/PcClinicQuery.vue'),
-    },
-    {
-      path: '/infra/repair-book',
-      name: 'computerFreeDiagnosisAppointment',
-      component: () => import('../views/computerFreeDiagnosisAppointment.vue'),
-    },
-    {
-      path: '/DevelopDepartment',
-      name: 'DevelopDepartment',
-      component: () => import('../views/DevelopDepartment.vue'),
-    },
-    {
-      path: '/externalPropagandaDepartment',
-      name: 'externalPropagandaDepartment',
-      component: () => import('../views/externalPropagandaDepartment.vue'),
-    },
-    {
-      path: '/:pathMatch(.*)*',
-      name: 'notFound',
-      component: { template: '<div>404 Not Found</div>' },
-    },
-  ],
+      path: '/register', // 报名页改为/register路径
+      name: 'Register',
+      component: Register
+    }
+  ]
 })
 
 export default router
