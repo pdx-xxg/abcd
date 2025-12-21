@@ -151,7 +151,7 @@
 		try {
 			await formRef.value.validate()
 			// 3. 新增：跳转到成功页（替换原来的alert）
-			router.push('/success')
+			router.push('/')
 			formRef.value.resetFields()
 		} catch (error) {
 			console.log('表单验证失败：', error)

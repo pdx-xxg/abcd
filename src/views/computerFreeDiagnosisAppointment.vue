@@ -1,7 +1,11 @@
 <script setup lang="ts" name="computerFreeDiagnosisAppointment">
     import {ref} from 'vue';
-
+    import {useRouter} from 'vue-router';
     const date = ref('');
+    const router = useRouter();
+    const gotoHome = () => {
+        router.push('/');
+    }
 </script>
 
 <template>
@@ -71,7 +75,7 @@
                     </div>
                     
                     <div class="bo kong">
-                        <input type="submit" value="提交预约工单">
+                        <button @click="gotoHome">提交预约工单</button>
                     </div>
                 </form>
             </div>
@@ -213,7 +217,7 @@ html, body, #app {
         padding: 0 10px;
     }
     
-    .bo input {
+    .bo button {
         height: 50px;
         width: 100%;
         background-color: rgb(59, 130, 246);
