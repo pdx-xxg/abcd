@@ -9,7 +9,6 @@
 </script>
 
 <template>
-    <!-- 使用一个根容器来设置页面背景色 -->
     <div class="page-container">
         <div class="nei">
             <div class="top">
@@ -85,7 +84,7 @@
 
 <!-- 添加非scoped样式块来覆盖全局样式 -->
 <style>
-/* 强制覆盖所有可能的全局样式 */
+/* 强制覆盖所有可能的全局样式
 * {
     box-sizing: border-box;
     margin: 0;
@@ -101,7 +100,7 @@ html, body, #app {
     max-width: none !important;
     display: block !important;
     overflow-x: hidden !important;
-}
+} */
 </style>
 
 <!-- 组件scoped样式 -->
@@ -121,7 +120,7 @@ html, body, #app {
     /* 表单容器 */
     .nei {
         width: 1200px;
-        max-width: calc(100% - 40px); /* 在大屏幕上保持合适的宽度，小屏幕自动适应 */
+        max-width: calc(100% - 40px);
         background-color: #ffffff;
         border-radius: 10px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -187,17 +186,6 @@ html, body, #app {
         background-color: #fff;
         border-radius: 5px;
         padding: 0 10px;
-        font-size: 14px;
-    }
-    
-    /* 自定义日期占位符样式 */
-    .date-placeholder {
-        position: absolute;
-        left: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: #999;
-        pointer-events: none;
         font-size: 14px;
     }
     
