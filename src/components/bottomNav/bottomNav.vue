@@ -3,7 +3,7 @@
     <footer class="footer-container">
         <!-- Logo区域 -->
         <div class="footer-logo">
-            <img src="../assets/logo.png"alt="橙果工作室Logo">
+            <img src="../../assets/logo3-7hO-uTOp.png" alt="橙果工作室Logo">
         </div>
 
         <!-- 导航列容器 -->
@@ -12,17 +12,17 @@
             <div class="nav-column">
                 <h3 class="column-title">网站导航</h3>
                 <ul class="nav-list">
-                    <li><a href="#">主页</a></li>
-                    <li><a href="#">学习部</a></li>
-                    <li><a href="#">开发部</a></li>
-                    <li><a href="#">事务部</a></li>
-                    <li><a href="#">外宣部</a></li>
-                    <li><a href="#">短视频组</a></li>
-                    <li><a href="#">全栈组</a></li>
-                    <li><a href="#">硬件组</a></li>
-                    <li><a href="#">嵌入式组</a></li>
-                    <li><a href="#">开发组</a></li>
-                    <li><a href="#">大数据组</a></li>
+                    <li><a @click="gotoHome">主页</a></li>
+                    <li><a @click="gotoLearning">学习部</a></li>
+                    <li><a @click="gotoDevelop">开发部</a></li>
+                    <li><a @click="gotoTransaction">事务部</a></li>
+                    <li><a @click="gotoPromotion">外宣部</a></li>
+                    <li><a @click="gotoVideo">短视频组</a></li>
+                    <li><a @click="gotoFullstack">全栈组</a></li>
+                    <li><a @click="gotoHardware">硬件组</a></li>
+                    <li><a @click="gotoEmbedded">嵌入式组</a></li>
+                    <li><a @click="gotoDevelopDepartment">开发组</a></li>
+                    <li><a @click="gotoBigdata">大数据组</a></li>
                 </ul>
             </div>
 
@@ -41,12 +41,12 @@
             <div class="nav-column">
                 <h3 class="column-title">友情链接</h3>
                 <ul class="nav-list">
-                    <li><a href="#">工大官网</a></li>
-                    <li><a href="#">工大教务系统</a></li>
-                    <li><a href="#">工大教务处</a></li>
-                    <li><a href="#">数字工大</a></li>
-                    <li><a href="#">微软正版化</a></li>
-                    <li><a href="#">校园邮箱</a></li>
+                    <li><a href="https://www.qlu.edu.cn" target="_blank">工大官网</a></li>
+                    <li><a href="https://sso.qlu.edu.cn/" target="_blank">工大教务系统</a></li>
+                    <li><a href="https://jwc.qlu.edu.cn/" target="_blank">工大教务处</a></li>
+                    <li><a href="https://sso.qlu.edu.cn/" target="_blank">数字工大</a></li>
+                    <li><a href="http://ms.qlu.edu.cn/" target="_blank">微软正版化</a></li>
+                    <li><a href="https://mail.qlu.edu.cn/" target="_blank">校园邮箱</a></li>
                 </ul>
             </div>
 
@@ -54,8 +54,8 @@
             <div class="nav-column">
                 <h3 class="column-title">加入我们</h3>
                 <ul class="nav-list">
-                    <li><a href="#">在线报名</a></li>
-                    <li><a href="#">查询报名状态</a></li>
+                    <li><a @click="gotoRegister">在线报名</a></li>
+                    <li><a @click="gotoRegistrationQuery">查询报名状态</a></li>
                 </ul>
             </div>
         </div>
@@ -68,13 +68,51 @@
     </div>
 
 </template>
-<script>
+<script setup name="bottomNav">
+    import { useRouter } from 'vue-router';
 
+    const router = useRouter();
 
+    const gotoHome = () => {
+        router.push('/');
+    }
 
-export default {
-  
-}
+    const gotoLearning = () => {
+        router.push('/orange学习部');
+    }
+    const gotoDevelop = () => {
+        router.push('/Orange 开发');
+    }
+    const gotoTransaction = () => {
+        router.push('/orange事务部');
+    }
+    const gotoPromotion = () => {
+        router.push('/externalPropagandaDepartment');
+    }
+    const gotoVideo = () => {
+        router.push('/Orange 短视频');
+    }
+    const gotoFullstack = () => {
+        router.push('/full-stack');
+    }
+    const gotoHardware = () => {
+        router.push('/hardware');
+    }
+    const gotoEmbedded = () => {
+        router.push('/embedded');
+    }
+    const gotoDevelopDepartment = () => {
+        router.push('/DevelopDepartment');
+    }
+    const gotoBigdata = () => {
+        router.push('/data');
+    }
+    const gotoRegister = () => {
+        router.push('/Register');
+    }
+    const gotoRegistrationQuery = () => {
+        router.push('/student-query');
+    }
 </script>
 <style scoped>
      body {
