@@ -23,7 +23,7 @@
   
   // 图片路径
   const logoImage = new URL('@/assets/logo4-DX7cGJ5Y.png', import.meta.url).href
-  const variableImage = new URL('@/assets/xxb.jpg', import.meta.url).href
+  const variableImage = new URL('@/assets/hardware.jpg', import.meta.url).href
   </script>
   
   <style scoped>

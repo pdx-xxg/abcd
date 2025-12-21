@@ -4,8 +4,7 @@
     <div class="top-section">
       <!-- 靠上的盒子：文字"橙果工作室" -->
       <div class="top-text-box">
-        <h1>橙果工作室</h1>
-        <p>{{ props.variableText }}</p>
+        <h1>{{ props.variableText }}</h1>
       </div>
       
       <!-- 靠下的盒子：图片 -->
@@ -72,7 +71,7 @@ const props = withDefaults(defineProps<Props>(), {
   align-items: center;
   justify-content: center;
   gap: 30px;
-  margin-bottom: 40px;
+  margin-bottom: -50px;
 }
 
 .top-text-box {
@@ -85,11 +84,6 @@ const props = withDefaults(defineProps<Props>(), {
   font-size: 3rem;
   margin-bottom: 10px;
   font-weight: bold;
-}
-
-.top-text-box p {
-  font-size: 1.2rem;
-  opacity: 0.9;
 }
 
 .top-image-box {
@@ -150,7 +144,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 .bottom-right-box h2 {
   font-size: 1.8rem;
-  margin-bottom:30px;
+  margin-bottom:20px; 
   text-align: center;
 }
 
