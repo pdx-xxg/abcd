@@ -1,6 +1,7 @@
 <template>
     <div class="develop-department-page">
       <LxDepartment 
+        :id=8
         :variable-text="variableText"
         :bottom-text="bottomText"
         :bottom-description="bottomDescription"

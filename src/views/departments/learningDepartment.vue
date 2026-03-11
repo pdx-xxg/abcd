@@ -1,18 +1,21 @@
 <template>
   <div class="develop-department-page">
-    <LxDepartment 
+      <LxDepartment 
+      :id=2
       :variable-text="variableText"
       :bottom-text="bottomText"
       :bottom-description="bottomDescription"
       :logo-image="logoImage"
       :variable-image="variableImage"
-    />
+      />
   </div>
 </template>
 
 <script setup lang="ts">
 
 import LxDepartment from '@/components/LxDepartment'
+import { getWebsiteDate } from '@/api/content'
+import { ref } from 'vue'
 
 const variableText = '学习部'
 const bottomText = '学习部简介'
@@ -24,6 +27,14 @@ const bottomDescription = [
 // 图片路径
 const logoImage = new URL('@/assets/logo4-DX7cGJ5Y.png', import.meta.url).href
 const variableImage = new URL('@/assets/xxb.jpg', import.meta.url).href
+
+let da = ref();
+const getAllData = async () => {
+  const data = (await getWebsiteDate(2)).data;
+  da.value = data;
+}
+getAllData();
+
 </script>
 
 <style scoped>

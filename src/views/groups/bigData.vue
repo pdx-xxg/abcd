@@ -1,6 +1,7 @@
 <template>
     <div class="external-propaganda-page">
       <LxDepartment 
+        :id=9
         :variable-text="variableText"
         :bottom-text="bottomText"
         :bottom-description="bottomDescription"

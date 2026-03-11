@@ -2,86 +2,93 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { top: 0 }
+    }
+  },
   routes: [
     {
       path: '/',
       name: 'Home',
-      component: () => import('../views/Home.vue'),
+      component: () => import('../views/home/index.vue'),
     },
     {
       path: '/student-query',
       name: 'StudentQuery',
-      component: () => import('../views/RegistrationQuery.vue'),
+      component: () => import('../views/joinSearch/index.vue'),
     },
     {
       path: '/phone-query',
       name: 'PhoneQuery',
-      component: () => import('../views/PcClinicQuery.vue'),
+      component: () => import('../views/computerFreeDiagnosis/search/index.vue'),
     },
     {
       path: '/infra/repair-book',
       name: 'computerFreeDiagnosisAppointment',
-      component: () => import('../views/computerFreeDiagnosisAppointment.vue'),
+      component: () => import('../views/computerFreeDiagnosis/appointment/index.vue'),
     },
     {
       path: '/Register',
       name: 'Register',
-      component: () => import('../views/Register.vue'),
+      component: () => import('../views/join/index.vue'),
     },
     {
       path: '/DevelopDepartment',
       name: 'DevelopDepartment',
-      component: () => import('../views/DevelopDepartment.vue'),
+      component: () => import('../views/departments/DevelopDepartment.vue'),
     },
     {
       path: '/externalPropagandaDepartment',
       name: 'externalPropagandaDepartment',
-      component: () => import('../views/externalPropagandaDepartment.vue'),
+      component: () => import('../views/departments/externalPropagandaDepartment.vue'),
     },
     {
       path: '/full-stack',
       name: 'FullStack',
-      component: () => import('../views/full-stack.vue'),
+      component: () => import('../views/groups/fullStack.vue'),
     },
     {
       path: '/hardware',
       name: 'Hardware',
-      component: () => import('../views/hardware.vue'),
+      component: () => import('../views/groups/hardware.vue'),
     },
     {
       path: '/data',
       name: 'Data',
-      component: () => import('../views/data.vue'),
+      component: () => import('../views/groups/bigData.vue'),
     },
     {
       path: '/embedded',
       name: 'Embedded',
-      component: () => import('../views/embedded.vue'),
+      component: () => import('../views/groups/embedded.vue'),
     },
     {
       path: '/orange学习部',
       name: 'OrangeLearning',
-      component: () => import('../views/orange学习部.vue'),
+      component: () => import('../views/departments/learningDepartment.vue'),
     },
     {
       path: '/orange事务部',
       name: 'OrangeAffairs',
-      component: () => import('../views/orange事务部.vue'),
+      component: () => import('../views/departments/affairsDepartment.vue'),
     },
     {
       path: '/Orange 短视频',
       name: 'OrangeShortVideo',
-      component: () => import('../views/Orange 短视频.vue'),
+      component: () => import('../views/groups/video.vue'),
     },
     {
       path: '/Orange 开发',
       name: 'OrangeDevelop',
-      component: () => import('../views/Orange 开发.vue'),
+      component: () => import('../views/groups/develop.vue'),
     },
     {
       path: '/:pathMatch(.*)*',
       name: 'notFound',
-      component: { template: '<div>404 Not Found</div>' },
+      redirect: '/',
     },
   ],
 })

@@ -68,7 +68,8 @@
     </div>
 
 </template>
-<script setup name="bottomNav">
+<script setup lang="ts">
+    defineOptions({ name: 'bottomNav' })
     import { useRouter } from 'vue-router';
 
     const router = useRouter();

@@ -1,10 +1,38 @@
 <script setup lang="ts" name="computerFreeDiagnosisAppointment">
-    import {ref} from 'vue';
-    import {useRouter} from 'vue-router';
-    const date = ref('');
+    import { ref } from 'vue';
+    import { useRouter } from 'vue-router';
+    import { postAppointmentForm } from '@/api/appointment';
+    import { ElMessage } from 'element-plus';
+
     const router = useRouter();
-    const gotoHome = () => {
-        router.push('/');
+
+    const form = ref({
+        name: '',
+        phone: '',
+        model: '',
+        service: '请选择你的需求',
+        email: '',
+        date: ''
+    });
+
+    const submitAppointment = async (e: Event) => {
+        e.preventDefault();
+        
+        // 简单校验
+        if (!form.value.name || !form.value.phone || !form.value.model || form.value.service === '请选择你的需求') {
+            ElMessage.warning('请填写完整的预约信息');
+            return;
+        }
+
+        try {
+            const res = await postAppointmentForm(form.value);
+            if (res.code === 200) {
+                ElMessage.success('提交预约成功！');
+                router.push('/');
+            }
+        } catch (error) {
+            console.error('提交预约失败：', error);
+        }
     }
 </script>
 
@@ -15,26 +43,26 @@
                 <p>请在下方填写你的预约工单</p>
             </div>
             <div class="bottom">
-                <form>
+                <form @submit="submitAppointment">
                     <div class="name kong">
                         <div><label for="name"><span>*</span>姓名</label></div>
-                        <div><input class="inp" type="text" id="name" name="name" required placeholder="请输入你的名字"></div>
+                        <div><input v-model="form.name" class="inp" type="text" id="name" name="name" required placeholder="请输入你的名字"></div>
                     </div>
 
                     <div class="phone kong">
                         <div><label for="phone"><span>*</span>手机号</label></div>
-                        <div><input class="inp" type="tel" id="phone" name="phone" required placeholder="请输入你的手机号"></div>
+                        <div><input v-model="form.phone" class="inp" type="tel" id="phone" name="phone" required placeholder="请输入你的手机号"></div>
                     </div>
 
                     <div class="com kong">
                         <div><label for="model"><span>*</span>电脑型号</label></div>
-                        <div><input class="inp" type="text" id="model" name="model" required placeholder="请输入你的电脑型号"></div>
+                        <div><input v-model="form.model" class="inp" type="text" id="model" name="model" required placeholder="请输入你的电脑型号"></div>
                     </div>
 
                     <div class="ser kong">
                         <div><label for="service"><span>*</span>服务需求(若有其他需求可直接输入)</label></div>
                         <div>
-                            <select class="inp" name="service" id="service">
+                            <select v-model="form.service" class="inp" name="service" id="service">
                                 <option value="请选择你的需求">请选择你的需求</option>
                                 <option value="清灰换硅脂">清灰换硅脂</option>
                                 <option value="重装系统">重装系统</option>
@@ -46,7 +74,7 @@
 
                     <div class="ema kong">
                         <div><label for="email">邮箱</label></div>
-                        <div><input class="inp" type="email" id="email" name="email" required placeholder="请输入你的邮箱(仅用于接受邮箱提醒)"></div>
+                        <div><input v-model="form.email" class="inp" type="email" id="email" name="email" required placeholder="请输入你的邮箱(仅用于接受邮箱提醒)"></div>
                     </div>
 
                     <div class="date kong">
@@ -58,7 +86,7 @@
                                 id="date" 
                                 name="date" 
                                 required 
-                                v-model="date" 
+                                v-model="form.date" 
                             >
                         </div>
                     </div>
@@ -74,7 +102,7 @@
                     </div>
                     
                     <div class="bo kong">
-                        <button @click="gotoHome">提交预约工单</button>
+                        <button type="submit">提交预约工单</button>
                     </div>
                 </form>
             </div>
