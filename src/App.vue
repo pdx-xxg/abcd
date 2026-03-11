@@ -2,7 +2,7 @@
   <div id="app">
     <OrangeTopNav />
     <router-view v-slot="{ Component, route }">
-      <transition :name="route.meta.transition || 'fade'" mode="out-in">
+      <transition :name="(route.meta.transition as string) || 'fade'" mode="out-in">
         <component :is="Component" :key="route.path" />
       </transition>
     </router-view>
@@ -10,7 +10,10 @@
   <bottomNav />
 </template>
 
-<script setup>
+<script setup lang="ts">
+import OrangeTopNav from './components/OrangeTopNav/index.vue'
+import bottomNav from './components/bottomNav/bottomNav.vue'
+
 defineOptions({ name: 'App' })
 </script>
 

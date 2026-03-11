@@ -23,24 +23,30 @@
       <!-- 靠右的盒子：文字 -->
       <div class="bottom-right-box">
         <h2>{{ props.bottomText }}</h2>
-        <p v-for="(paragraph, index) in props.bottomDescription" :key="index">{{ paragraph }}</p>
+        <div v-if="da && da.content" v-html="da.content" class="description-html"></div>
+        <p v-else v-for="(paragraph, index) in props.bottomDescription" :key="index">{{ paragraph }}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { getWebsiteDate } from '@/api/content';
+import { ref } from 'vue';
+
 defineOptions({ name: 'LxDepartment' })
 
 interface Props {
+  id?: number
   variableText?: string
   bottomText?: string
-  bottomDescription?: string[]
+  bottomDescription?: string[] | string
   logoImage?: string
   variableImage?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
+  id: 0,
   variableText: '这里是可变文字内容',
   bottomText: '右侧标题',
   bottomDescription: () => [
@@ -50,6 +56,13 @@ const props = withDefaults(defineProps<Props>(), {
   logoImage: '@/assets/logo4-DX7cGJ5Y.png',
   variableImage: '@/assets/variable-image.png'
 })
+
+let da = ref();
+const getAllData = async () => {
+  const data = (await getWebsiteDate(props.id)).data;
+  da.value = data;
+}
+getAllData();
 </script>
 
 <style scoped>
@@ -148,7 +161,8 @@ const props = withDefaults(defineProps<Props>(), {
   text-align: center;
 }
 
-.bottom-right-box p {
+.bottom-right-box p,
+.description-html :deep(p) {
   font-size: 1.2rem;
   line-height: 2.0;
   text-align: justify;

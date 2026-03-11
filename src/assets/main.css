@@ -1,5 +1,9 @@
 @import './base.css';
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* ===== 全局重置，不做居中布局 ===== */
 
 #app {

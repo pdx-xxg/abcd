@@ -68,8 +68,8 @@
             <div class="menu-item" @click="jump('/student-query')">查询报名状态</div>
             <div class="menu-item" @click="jump('/infra/repair-book')">电脑义诊预约</div>
             <div class="menu-item" @click="jump('/phone-query')">电脑义诊查询</div>
-            <div class="menu-item" @click="jump('/infra/admin')">极橙大后台</div>
-            <div class="menu-item" @click="jump('/infra/gitlab')">橙果 GitLab</div>
+            <div class="menu-item" @click="jump('http://oa.orangestudio.cn/login')">极橙大后台</div>
+            <div class="menu-item" @click="jump('https://gitlab.orangestudio.cn/')">橙果 GitLab</div>
           </div>
         </div>
       </nav>
@@ -108,13 +108,13 @@
   </header>
 </template>
 
-<script setup>
+<script setup lang="ts">
 defineOptions({ name: 'OrangeTopNav' })
 import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 import logo from '@/assets/logo.png'
 
 const active = ref('')
-let deptLeaveTimer = null
+let deptLeaveTimer: any = null
 
 function onDeptEnter() {
   if (deptLeaveTimer) {
@@ -133,7 +133,7 @@ function onDeptLeave() {
 const isMobile = ref(false)
 const mobileOpen = ref(false)
 
-const toggle = (key) => {
+const toggle = (key: string) => {
   active.value = active.value === key ? '' : key
 }
 
@@ -190,9 +190,13 @@ const goToDepartments = () => {
   mobileOpen.value = false
 }
 
-const jump = (path) => {
+const jump = (path: string) => {
   active.value = ''
-  mobileOpen.value = false
+  mobileOpen.value = false// 新增外部链接判断
+  if (path.startsWith('http')) {
+    window.open(path, '_blank')
+    return
+  }
   nextTick(() => {
     router.replace(path)
   })
@@ -206,8 +210,9 @@ const handleResize = () => {
   }
 }
 
-const handleClickOutside = (e) => {
-  if (!e.target.closest('.navbar')) {
+const handleClickOutside = (e: MouseEvent) => {
+  const target = e.target as HTMLElement
+  if (target && !target.closest('.navbar')) {
     active.value = ''
     mobileOpen.value = false
   }

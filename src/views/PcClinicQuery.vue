@@ -27,6 +27,8 @@
 import { ref } from 'vue'
 import QueryForm from '@/components/QueryForm/QueryForm.vue'
 import ProgressSteps from '@/components/ProgressSteps/ProgressSteps.vue'
+import { getAppointmentProcess } from '@/api/appointment'
+import { ElMessage } from 'element-plus'
 
 const phoneNumber = ref('')
 
@@ -62,11 +64,19 @@ function validatePhone(value) {
 
 async function handleQuery(value) {
   console.log('查询手机号：', value)
-  // TODO: 调用真实API
-  await new Promise((resolve) => setTimeout(resolve, 500))
-  // 模拟查询后更新步骤状态
-  steps.value[0].active = false
-  steps.value[1].active = true
+  try {
+    const res = await getAppointmentProcess(value)
+    if (res.code === 200) {
+      // 假设 res.data 返回当前进度 index (0-4)
+      const currentProcess = res.data.process || 0
+      steps.value.forEach((step, index) => {
+        step.active = index === currentProcess
+      })
+      ElMessage.success('查询成功')
+    }
+  } catch (error) {
+    console.error('查询失败：', error)
+  }
 }
 </script>
 

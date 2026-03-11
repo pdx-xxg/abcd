@@ -12,7 +12,7 @@
             橙果工作室是一个致力于技术学习与实践的学生组织，我们提供丰富的学习资源、项目实践机会和团队协作平台。
           </p>
           <div class="hero-actions">
-            <button class="btn-primary" @click="jump('/infra/apply')">立即报名</button>
+            <button class="btn-primary" @click="jump('/Register')">立即报名</button>
             <button class="btn-secondary" @click="scrollToSection('about')">了解更多</button>
           </div>
         </div>
@@ -143,12 +143,21 @@
         </div>
       </div>
     </section>
+    <h2 class="section-title">数据橙果</h2>
+    <data-orange />
+    <div class="flex justify-center mt-20">
+      <button
+      class="bg-blue-500 p-4 rounded-full text-white flex items-center hover:shadow-xl hover:translate-y-0.5 transition">
+      <span class="font-bold mr-1" @click="$router.push({ name: 'Register'})">加入橙果工作室<i class="fa fa-arrow-right ml-2 inline-block" aria-hidden="true"></i></span>
+    </button>
+  </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
+import dataOrange from '@/views/home/components/dataOrange.vue'
 
 defineOptions({ name: 'Home' })
 
